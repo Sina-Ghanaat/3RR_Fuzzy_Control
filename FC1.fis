@@ -1,0 +1,69 @@
+[System]
+Name='FC1'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Error'
+Range=[-2.5 2.5]
+NumMFs=5
+MF1='Negative':'trimf',[-0.3 -0.1 0]
+MF2='zero':'trimf',[-0.05 0 0.05]
+MF3='Positive':'trimf',[0 0.1 0.3]
+MF4='Negative_Large':'trapmf',[-7 -3 -0.5 -0.1]
+MF5='Positive_Large':'trapmf',[0.1 0.5 3 7]
+
+[Input2]
+Name='Errordot'
+Range=[-3 3]
+NumMFs=5
+MF1='Negative':'trimf',[-1.8 -0.9 0]
+MF2='Zero':'trimf',[-0.1 0 0.1]
+MF3='Positive':'trimf',[0 0.9 1.8]
+MF4='Negative_Large':'trapmf',[-8.4 -3.6 -2.7 -1.2]
+MF5='Posotove_Large':'trapmf',[1.2 2.7 3.6 8.4]
+
+[Output1]
+Name='Control_Effort'
+Range=[-2 2]
+NumMFs=5
+MF1='CCW':'trimf',[-0.8 -0.2 0]
+MF2='Zero':'trimf',[-0.12 0 0.12]
+MF3='CW':'trimf',[0 0.2 0.8]
+MF4='CCW_Big':'trapmf',[-3.334 -2.334 -0.8 -0.4]
+MF5='CW_Big':'trapmf',[0.4 0.8 2.334 5.332]
+
+[Rules]
+4 4, 4 (1) : 1
+4 1, 4 (1) : 1
+4 2, 4 (1) : 1
+4 3, 1 (1) : 1
+4 5, 2 (1) : 1
+1 4, 4 (1) : 1
+1 1, 4 (1) : 1
+1 2, 1 (1) : 1
+1 3, 2 (1) : 1
+1 5, 2 (1) : 1
+2 4, 1 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+2 3, 3 (1) : 1
+2 5, 3 (1) : 1
+3 4, 2 (1) : 1
+3 1, 2 (1) : 1
+3 2, 3 (1) : 1
+3 3, 3 (1) : 1
+3 5, 3 (1) : 1
+5 4, 2 (1) : 1
+5 1, 3 (1) : 1
+5 2, 5 (1) : 1
+5 3, 5 (1) : 1
+5 5, 5 (1) : 1
